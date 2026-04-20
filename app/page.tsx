@@ -2,6 +2,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { apiRequest } from "@/lib/proxy";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 interface Stage {
@@ -211,6 +212,11 @@ export default function LandingPage() {
     setEmailCopied(true);
     setTimeout(() => setEmailCopied(false), 2000);
   };
+
+  // Health check to prevent backend cold starts (ACA)
+  useEffect(() => {
+    apiRequest('/health').catch(() => {});
+  }, []);
 
   return (
     <>

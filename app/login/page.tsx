@@ -1,6 +1,6 @@
 // app/login/page.tsx
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { apiRequest } from '@/lib/proxy';
 
@@ -10,6 +10,11 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  
+  // Health check to prevent backend cold starts (ACA)
+  useEffect(() => {
+    apiRequest('/health').catch(() => {});
+  }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
