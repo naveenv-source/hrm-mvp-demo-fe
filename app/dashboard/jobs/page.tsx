@@ -106,7 +106,11 @@ export default function JobsPage() {
         done++; names.push(f.name);
       } catch (e: any) { setError(`${f.name}: ${e.message}`); }
     }
-    if (done > 0) { setUploadResult({ count: done, files: names }); await refreshCredits(); await loadData(); }
+    if (done > 0) { 
+      setUploadResult({ count: done, files: names }); 
+      await refreshCredits(); 
+      setJobs(prev => prev.map(j => j.id === jobId ? { ...j, has_evaluations: true } : j));
+    }
     setUploading(false); setUploadJobId(null);
   };
 
@@ -120,7 +124,11 @@ export default function JobsPage() {
       const r = await apiRequest(`/api/v1/candidates/${cid}/shortlist?job_id=${jobId}&max_candidates=${maxCandidates}`, { method: 'POST' });
       if (r?.ok) q++;
     }
-    if (q > 0) { setSuccess(`${q} queued!`); await refreshCredits(); }
+    if (q > 0) { 
+      setSuccess(`${q} queued!`); 
+      await refreshCredits(); 
+      setJobs(prev => prev.map(j => j.id === jobId ? { ...j, has_evaluations: true } : j));
+    }
     setShortlistJobId(null); setSelCands([]);
   };
 
