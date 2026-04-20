@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HRM.ai — AI-Powered Recruitment Platform",
+  title: "Workfolio HRM — AI-Powered Recruitment Platform",
   description: "Smart candidate management, automated resume parsing, AI dossier generation, and 2-phase shortlisting.",
 };
 

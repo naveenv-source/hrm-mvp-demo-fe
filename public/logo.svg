@@ -1,0 +1,10 @@
+<svg width="200" height="200" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background (brand style) -->
+  <rect width="20" height="20" rx="5" fill="#4F46E5"/>
+
+  <!-- Grid blocks -->
+  <rect x="3" y="3" width="6" height="6" rx="1.5" fill="#FFFFFF"/>
+  <rect x="11" y="3" width="6" height="6" rx="1.5" fill="#C7D2FE"/>
+  <rect x="3" y="11" width="6" height="6" rx="1.5" fill="#A5B4FC"/>
+  <rect x="11" y="11" width="6" height="6" rx="1.5" fill="#818CF8"/>
+</svg>
